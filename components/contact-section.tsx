@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import useInView from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 import { Mail, Clock, MessageSquare, MessageCircle, Twitter, Users, Music } from 'lucide-react';
 import { ContactForm } from './contact-form';
 import { CONTACT_INFO, SOCIAL_LINKS, TEAM_CONTACTS } from '@/lib/constants';
