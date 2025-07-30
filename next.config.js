@@ -1,19 +1,13 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: process.env.NEXT_DIST_DIR || '.next',
-  output: process.env.NEXT_OUTPUT_MODE,
+  output: 'standalone',
+  images: {
+    domains: ['tr.rbxcdn.com', 'assetgame.roblox.com'],
+    unoptimized: true
+  },
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, '../'),
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  images: { unoptimized: true },
-};
+    serverComponentsExternalPackages: []
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
