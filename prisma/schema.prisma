@@ -1,0 +1,48 @@
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/swansa_peacefulplay_fixed/app/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model ContactSubmission {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  company       String?
+  serviceType   String   // 'buyout', 'growth', 'recruitment', 'investment', 'networking', 'general'
+  subject       String
+  message       String
+  budget        String?
+  timeline      String?
+  experience    String?
+  status        String   @default("new") // 'new', 'reviewing', 'responded', 'closed'
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("contact_submissions")
+}
+
+model GamePortfolio {
+  id            String   @id @default(cuid())
+  name          String
+  description   String
+  gameUrl       String
+  imageUrl      String
+  visitCount    Int      @default(0)
+  isActive      Boolean  @default(true)
+  genre         String
+  launchDate    DateTime
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("game_portfolio")
+}
