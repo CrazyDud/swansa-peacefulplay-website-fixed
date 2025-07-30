@@ -1,16 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import { HandHeart, Target, Award, Users2 } from 'lucide-react';
+import { Heart, Target, Award, Users2 } from 'lucide-react';
 
 export function AboutSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const features = [
     {
-      icon: <HandHeart className="h-8 w-8" />,
+      icon: <Heart className="h-8 w-8" />,
       title: "Strategic Partnership",
       description: "Combining PeacefulPlay's creative vision with SwansInteractives' technical expertise"
     },
@@ -35,9 +32,8 @@ export function AboutSection() {
     <section id="about" className="py-20 bg-slate-800/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -55,7 +51,7 @@ export function AboutSection() {
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">
@@ -73,7 +69,7 @@ export function AboutSection() {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="bg-slate-700/30 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 transition-colors"
                 >
@@ -88,7 +84,7 @@ export function AboutSection() {
           {/* Partnership Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >

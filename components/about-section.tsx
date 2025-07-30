@@ -3,12 +3,12 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Handshake, Target, Award, Users2 } from 'lucide-react';
+import { Heart, Target, Award, Users2 } from 'lucide-react';
 
 export function AboutSection() {
   const features = [
     {
-      icon: <Handshake className="h-8 w-8" />,
+      icon: <Heart className="h-8 w-8" />,
       title: "Strategic Partnership",
       description: "Combining PeacefulPlay's creative vision with SwansInteractives' technical expertise"
     },
