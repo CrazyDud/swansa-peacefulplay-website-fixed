@@ -49,7 +49,7 @@ export const GAME_THUMBNAIL_MAP: Record<string, string> = {
   '98262568396175': '/shipmateys.webp',
   '89237005955850': '/walkordie.png',
   '108261591703074': '/escapehellforadmin.webp',
-  '14484114005': '/images/animerealms.png'
+  '14484114005': '/images/animerealms.webp'
 };
 
 // Extract place ID from Roblox game URL
