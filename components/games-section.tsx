@@ -2,7 +2,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { ExternalLink, Users, TrendingUp, Eye, Gamepad2, Crown, Star, Trophy, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatedCounter } from './animated-counter';
@@ -11,7 +10,6 @@ import Link from 'next/link';
 import { RobloxGameData, formatNumber } from '@/lib/roblox-api';
 
 export function GamesSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [games, setGames] = useState<RobloxGameData[]>([]);
   const [featuredGames, setFeaturedGames] = useState<RobloxGameData[]>([]);
   const [topSuccessGames, setTopSuccessGames] = useState<RobloxGameData[]>([]);
@@ -79,7 +77,7 @@ export function GamesSection() {
     <motion.div
       key={game.id}
       initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group relative"
     >
@@ -242,9 +240,8 @@ export function GamesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -261,7 +258,7 @@ export function GamesSection() {
         {/* Featured Games Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-20"
         >
@@ -288,7 +285,7 @@ export function GamesSection() {
         {/* Top Success Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-20"
         >
@@ -315,7 +312,7 @@ export function GamesSection() {
         {/* All Games Preview */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mb-12"
         >
@@ -367,7 +364,7 @@ export function GamesSection() {
         {/* Games CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center"
         >

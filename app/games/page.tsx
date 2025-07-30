@@ -2,7 +2,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { ExternalLink, Users, TrendingUp, Eye, Gamepad2, ArrowLeft, Calendar, Crown } from 'lucide-react';
 import { AnimatedCounter } from '@/components/animated-counter';
@@ -17,7 +16,6 @@ interface GameData extends RobloxGameData {
 }
 
 export default function GamesPage() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [games, setGames] = useState<GameData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -159,9 +157,8 @@ export default function GamesPage() {
               {games?.map((game, index) => (
                 <motion.div
                   key={game.id}
-                  ref={index === 0 ? ref : undefined}
                   initial={{ opacity: 0, y: 50 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                   className="group"
                 >
@@ -268,7 +265,7 @@ export default function GamesPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="bg-slate-800/40 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20"
             >

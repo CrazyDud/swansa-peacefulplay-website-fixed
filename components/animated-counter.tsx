@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
 
 interface AnimatedCounterProps {
   end: number;
@@ -18,11 +17,8 @@ export function AnimatedCounter({
   className = '' 
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
-    if (!inView) return;
-
     let startTimestamp: number | null = null;
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -36,7 +32,7 @@ export function AnimatedCounter({
     };
     
     window.requestAnimationFrame(step);
-  }, [end, duration, inView]);
+  }, [end, duration]);
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
@@ -48,7 +44,7 @@ export function AnimatedCounter({
   };
 
   return (
-    <span ref={ref} className={className}>
+    <span className={className}>
       {formatNumber(count)}{suffix}
     </span>
   );

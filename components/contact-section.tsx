@@ -2,14 +2,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Mail, Clock, MessageSquare, MessageCircle, Twitter, Users, Music } from 'lucide-react';
 import { ContactForm } from './contact-form';
 import { CONTACT_INFO, SOCIAL_LINKS, TEAM_CONTACTS } from '@/lib/constants';
 
 export function ContactSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const contactMethods = [
     {
       icon: <Mail className="h-6 w-6" />,
@@ -58,9 +55,8 @@ export function ContactSection() {
     <section id="contact" className="py-20 bg-slate-800/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -78,7 +74,7 @@ export function ContactSection() {
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-1"
           >
@@ -157,7 +153,7 @@ export function ContactSection() {
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="lg:col-span-2"
           >
@@ -168,7 +164,7 @@ export function ContactSection() {
         {/* Additional Contact Info */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 text-center"
         >
