@@ -33,7 +33,8 @@ export const GAME_URLS = [
   'https://www.roblox.com/games/15313073197/Anime-Combats-Simulator',
   'https://www.roblox.com/games/98262568396175/Ship-Mateys-2-Player-Obby',
   'https://www.roblox.com/games/89237005955850/Walk-Or-Die',
-  'https://www.roblox.com/games/108261591703074/Escape-Hell-For-Admin'
+  'https://www.roblox.com/games/108261591703074/Escape-Hell-For-Admin',
+  'https://www.roblox.com/games/14484114005/Anime-Realms-Simulator'
 ];
 
 // Game data with local thumbnails mapping
@@ -47,7 +48,8 @@ export const GAME_THUMBNAIL_MAP: Record<string, string> = {
   '15313073197': '/animecombatssimulator.webp',
   '98262568396175': '/shipmateys.webp',
   '89237005955850': '/walkordie.png',
-  '108261591703074': '/escapehellforadmin.webp'
+  '108261591703074': '/escapehellforadmin.webp',
+  '14484114005': '/images/animerealms.png'
 };
 
 // Extract place ID from Roblox game URL
@@ -339,6 +341,13 @@ export async function fetchCompleteGameData(gameUrl: string): Promise<{
       description: 'Escape the depths of hell and earn admin privileges!',
       ccu: 300,
       rating: 82.5
+    },
+    '14484114005': {
+      name: 'Anime Realms Simulator',
+      playing: 15420,
+      visits: 89500000,
+      likes: 234000,
+      dislikes: 12000
     }
   };
 
