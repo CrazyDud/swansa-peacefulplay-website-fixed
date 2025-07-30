@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import useInView from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 
 interface AnimatedCounterProps {
   end: number;
