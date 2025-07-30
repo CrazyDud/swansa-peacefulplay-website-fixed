@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import useInView from 'react-intersection-observer';
 import Image from 'next/image';
 import { ArrowRight, Check } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';

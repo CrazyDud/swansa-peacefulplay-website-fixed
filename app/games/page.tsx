@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import useInView from 'react-intersection-observer';
 import Image from 'next/image';
 import { ExternalLink, Users, TrendingUp, Eye, Gamepad2, ArrowLeft, Calendar, Crown } from 'lucide-react';
 import { AnimatedCounter } from '@/components/animated-counter';
