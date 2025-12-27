@@ -118,7 +118,7 @@ export const TEAM_CONTACTS = {
     discord: 'murat_avtzi'
   },
   creative: {
-    name: 'cenastarite', 
+    name: 'cenastarite',
     role: 'SwansInteractives - Creative Side',
     discord: 'cenastarite'
   }
@@ -127,7 +127,7 @@ export const TEAM_CONTACTS = {
 // Company positioning
 export const COMPANY_INFO = {
   swansa: {
-    name: 'Swansa',
+    name: 'Swansa Interactives',
     role: 'Creative Powerhouse',
     description: 'The creative force behind captivating game experiences, innovative design concepts, and compelling player engagement strategies.',
     focus: 'Art Direction, Game Design, User Experience, Creative Vision'

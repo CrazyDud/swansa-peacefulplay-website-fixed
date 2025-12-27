@@ -24,6 +24,9 @@ export interface RobloxGameData {
 
 // Game URLs provided by the user (removed "Get Rich Simulator")
 export const GAME_URLS = [
+  'https://www.roblox.com/games/121427275368400/Climb-Roll-Down-Escalator',
+  'https://www.roblox.com/games/130526233138543/67-TAG',
+  'https://www.roblox.com/games/82468973744447/Climb-And-Become-Santa',
   'https://www.roblox.com/games/89726090098716/Grow-Eggs',
   'https://www.roblox.com/games/82765379267604/Anime-Sword-Master',
   'https://www.roblox.com/games/119235008877304/Sigma-Boy-Simulator',
@@ -39,6 +42,9 @@ export const GAME_URLS = [
 
 // Game data with local thumbnails mapping
 export const GAME_THUMBNAIL_MAP: Record<string, string> = {
+  '121427275368400': '/climbandrolldownescelator.png',
+  '130526233138543': '/67Tag.png',
+  '82468973744447': '/ClimbAndBecomeSanta.png',
   '89726090098716': '/groweggs.webp',
   '82765379267604': '/animeswordmaster.webp',
   '119235008877304': '/sigmaboysimulator.webp',
@@ -92,25 +98,25 @@ export async function getUniverseId(placeId: string): Promise<number | null> {
           'User-Agent': 'SwansaPeacefulPlay/1.0'
         }
       });
-      
+
       if (!response.ok) {
         console.warn(`API source ${index + 1} failed with status ${response.status}`);
         continue;
       }
-      
+
       const data = await response.json();
-      
+
       // Handle different response formats
       if (data.UniverseId) return data.UniverseId; // Official API format
       if (data.universeId) return data.universeId; // RoProxy format
       if (data[0]?.universeId) return data[0].universeId; // Alternative format
-      
+
       console.warn(`API source ${index + 1} returned unexpected format:`, data);
     } catch (error) {
       console.error(`API source ${index + 1} failed:`, error);
     }
   }
-  
+
   console.error(`All API sources failed for place ${placeId}`);
   return null;
 }
@@ -139,17 +145,17 @@ export async function fetchRealGameData(universeId: number, placeId: string): Pr
         source: 'official-roblox'
       };
     },
-    
+
     // Secondary: RomMonitor API (if available)
     async () => {
       console.log(`Trying RomMonitor API for place ${placeId}`);
       const response = await fetch(`https://api.rommonitor.com/v1/game/${placeId}`, {
         headers: { 'Accept': 'application/json' }
       });
-      
+
       if (!response.ok) throw new Error(`RomMonitor API failed: ${response.status}`);
       const data = await response.json();
-      
+
       return {
         game: {
           id: universeId,
@@ -168,7 +174,7 @@ export async function fetchRealGameData(universeId: number, placeId: string): Pr
         source: 'rommonitor'
       };
     },
-    
+
     // Tertiary: RoProxy fallback
     async () => {
       console.log(`Trying RoProxy API for universe ${universeId}`);
@@ -199,7 +205,7 @@ export async function fetchRealGameData(universeId: number, placeId: string): Pr
       console.error(`API attempt ${index + 1} failed:`, error);
     }
   }
-  
+
   console.error(`All API attempts failed for universe ${universeId}`);
   return { game: null, votes: null, source: 'none' };
 }
@@ -211,7 +217,7 @@ export async function fetchCompleteGameData(gameUrl: string): Promise<{
   placeId: string;
 }> {
   const placeId = extractPlaceId(gameUrl);
-  
+
   if (!placeId) {
     return { gameData: null, thumbnailUrl: null, placeId: '' };
   }
@@ -245,7 +251,7 @@ export async function fetchCompleteGameData(gameUrl: string): Promise<{
           genre: 'Simulator',
           thumbnailPath: thumbnailPath || '',
           ccu: realData.game.playing || 0,
-          rating: realData.votes ? 
+          rating: realData.votes ?
             (realData.votes.upVotes / (realData.votes.upVotes + realData.votes.downVotes) * 100) : 85
         };
 
@@ -262,6 +268,30 @@ export async function fetchCompleteGameData(gameUrl: string): Promise<{
 
   // Fallback to enhanced mock data (removed "Get Rich Simulator")
   const mockData: Record<string, any> = {
+    '121427275368400': {
+      name: 'Climb & Roll Down Escalator',
+      visits: 500000,
+      playing: 150,
+      description: 'Experience the thrill of climbing and rolling down the world\'s longest escalator!',
+      ccu: 150,
+      rating: 92.5
+    },
+    '130526233138543': {
+      name: '67 TAG!',
+      visits: 250000,
+      playing: 85,
+      description: 'Run and jump your way through 5 maps! — but watch out! If you get tagged, you turn into Red 67! Chase down others before time runs out!',
+      ccu: 85,
+      rating: 90.0
+    },
+    '82468973744447': {
+      name: 'Climb And Become Santa',
+      visits: 750000,
+      playing: 450,
+      description: 'Climb your way to the North Pole and earn your title as Santa Claus!',
+      ccu: 450,
+      rating: 95.2
+    },
     '89726090098716': {
       name: 'Grow Eggs',
       visits: 15000000,
@@ -346,13 +376,16 @@ export async function fetchCompleteGameData(gameUrl: string): Promise<{
       name: 'Anime Realms Simulator',
       playing: 15420,
       visits: 89500000,
+      ccu: 15420,
+      description: 'Explore vast anime realms, collect powerful heroes, and battle epic bosses!',
+      rating: 96.8,
       likes: 234000,
       dislikes: 12000
     }
   };
 
   const data = mockData[placeId];
-  
+
   if (!data) {
     return { gameData: null, thumbnailUrl: null, placeId };
   }
