@@ -1,0 +1,33 @@
+# dependencies and build output
+/node_modules/
+/.next/
+/.vinext/
+/dist/
+/.wrangler/
+/.openai/
+/.playwright-cli/
+/.vercel/
+/build/
+/worker/
+/db/
+/drizzle/
+/outputs/
+/work/
+cloudflare-env.d.ts
+drizzle.config.ts
+vite.config.ts
+
+# local environment
+.env*
+!.env.example
+
+# logs and editor files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+*.pem
+
+# generated TypeScript metadata
+*.tsbuildinfo
+next-env.d.ts
