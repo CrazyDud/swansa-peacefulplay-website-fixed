@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import type { GameRecord } from "@/db/schema";
+import type { GameRecord } from "@/lib/types";
 import { GameCard } from "@/components/game-card";
 
 export function GameExplorer({ games }: { games: GameRecord[] }) {

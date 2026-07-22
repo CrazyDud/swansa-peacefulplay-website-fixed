@@ -1,5 +1,5 @@
 import { ArrowUpRight, Eye, Star, Users } from "lucide-react";
-import type { GameRecord } from "@/db/schema";
+import type { GameRecord } from "@/lib/types";
 import { formatNumber } from "@/lib/roblox";
 
 export function GameCard({ game, featured = false }: { game: GameRecord; featured?: boolean }) {

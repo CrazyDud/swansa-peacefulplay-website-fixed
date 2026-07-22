@@ -14,7 +14,7 @@ import {
   Star,
   Trash2,
 } from "lucide-react";
-import type { GameRecord } from "@/db/schema";
+import type { GameRecord } from "@/lib/types";
 import type { RobloxSnapshot } from "@/lib/roblox";
 import { formatNumber } from "@/lib/roblox";
 
